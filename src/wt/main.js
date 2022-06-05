@@ -16,7 +16,7 @@ export const performCalculations = async () => {
             for (let i = 0; i < numberCores; i++) {
                 const worker = new Worker(pathToFile, { workerData: i + OFFSET_FROM_INDEX });
                 worker.on('message', (data) => {
-                    resultCalculations.push(data);
+                    resultCalculations.splice(i, 0, data);
                     if (resultCalculations.length === numberCores) {
                         resolve(resultCalculations);
                     }

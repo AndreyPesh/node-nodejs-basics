@@ -9,9 +9,9 @@ parentPort.on('message', () => {
 export const sendResult = () => {
     try {
         const result = nthFibonacci(workerData);
-        if(Math.random() > 0.5) {
-            throw new Error('Error worker');
-        }
+        // if(Math.random() > 0.5) {
+        //     throw new Error('Error worker');
+        // }
         parentPort.postMessage({status: 'resolved', data: result});
     } catch {
         parentPort.postMessage({status: 'error', data: null});
